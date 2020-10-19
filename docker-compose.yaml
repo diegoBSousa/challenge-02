@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: container-postgresql-challenge02
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./.docker/postgres/data:/var/lib/postgresql/data/pgdata
+    networks:
+      - challenge02-network
+
+networks:
+  challenge02-network:
+    driver: bridge
