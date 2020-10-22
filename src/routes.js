@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import User from './app/models/User';
+import UserController from './app/controllers/UserController';
 
 const routes = new Router();
 
@@ -14,4 +15,7 @@ routes.get('/', async (req, res) => {
   res.json(user);
 });
 
+routes.post('/users/', UserController.store);
+
 export default routes;
+// cadastro de usuário 2:35
