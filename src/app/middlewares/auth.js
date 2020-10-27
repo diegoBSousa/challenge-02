@@ -13,10 +13,10 @@ export default async (req, res, next) => {
 
   try {
     const payload = await promisify(jwt.verify)(token, authConfig.secret);
-
     req.userId = payload.uuid;
-    return next();
   } catch (err) {
     res.status(401).json({ error: 'Invalid token' });
   }
+
+  return next();
 };
