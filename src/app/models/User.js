@@ -7,7 +7,7 @@ class User extends Model {
     super.init(
       {
         uuid: {
-          type: Sequelize.UUID, // 2:34 gerando hash
+          type: Sequelize.UUID,
           primaryKey: true,
         },
         name: Sequelize.STRING,

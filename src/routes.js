@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import User from './app/models/User';
 import UserController from './app/controllers/UserController';
+import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
 import authMiddleware from './app/middlewares/auth';
 
@@ -23,5 +24,7 @@ routes.post('/sessions/', SessionController.store);
 routes.use(authMiddleware);
 
 routes.put('/users/', UserController.update);
+routes.post('/recipients/', RecipientController.store);
+routes.put('/recipients/', RecipientController.update);
 
 export default routes;
