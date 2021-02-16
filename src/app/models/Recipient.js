@@ -25,6 +25,8 @@ class Recipient extends Model {
     this.addHook('beforeCreate', async (recipient) => {
       recipient.uuid = uuidv4();
     });
+
+    return this;
   }
 }
 
