@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import multer from 'multer';
-import UserController from './app/controllers/UserController';
-import RecipientController from './app/controllers/RecipientController';
 import DeliverymanController from './app/controllers/DeliverymanController';
+import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
+import ParcelController from './app/controllers/ParcelController';
+import UserController from './app/controllers/UserController';
 import FileController from './app/controllers/FileController';
 import authMiddleware from './app/middlewares/auth';
 import validationMiddleware from './app/middlewares/validation';
@@ -17,6 +18,7 @@ routes.post('/sessions/', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.post('/files', upload.single('file'), FileController.store);
 routes.put('/users/', UserController.update);
 routes.post('/recipients/', RecipientController.store);
 routes.put('/recipients/', RecipientController.update);
@@ -36,6 +38,6 @@ routes.delete(
   DeliverymanController.delete
 );
 
-routes.post('/files', upload.single('file'), FileController.store);
+routes.post('/parcels/', ParcelController.store);
 
 export default routes;

@@ -4,8 +4,9 @@ import User from '../app/models/User';
 import Recipient from '../app/models/Recipient';
 import Deliveryman from '../app/models/Deliveryman';
 import File from '../app/models/File';
+import Parcel from '../app/models/Parcel';
 
-const models = [User, Recipient, Deliveryman, File];
+const models = [User, Recipient, Deliveryman, File, Parcel];
 
 class Database {
   constructor() {
@@ -14,7 +15,6 @@ class Database {
 
   init() {
     this.connection = new Sequelize(databaseConfig);
-    // console.log(this.connection);
     models
       .map((model) => model.init(this.connection))
       .map(

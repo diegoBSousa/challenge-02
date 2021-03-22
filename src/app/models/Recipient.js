@@ -28,6 +28,13 @@ class Recipient extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Parcel, {
+      foreignKey: 'recipient_uuid',
+      as: 'parcels',
+    });
+  }
 }
 
 export default Recipient;
